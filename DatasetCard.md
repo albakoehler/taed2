@@ -80,7 +80,7 @@ It contains the following 6 fields:
 
 ### Data Splits
 
-The data set is divided into two splits: train (1600000	instances) and test (498 instances).
+The data set has only one split: train set, with 1600000 instances.
 
 ## Dataset Creation
 
