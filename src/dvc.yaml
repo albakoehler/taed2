@@ -1,0 +1,15 @@
+stages:
+  prepare:
+    cmd: python processing.py
+    deps:
+    - data/raw/raw_data.csv
+    - processing.py
+    params:
+    - prepare.random_state
+    - prepare.test_size
+    - prepare.train_size
+    outs:
+    - data/processed/X_test.csv
+    - data/processed/X_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv

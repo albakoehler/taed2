@@ -13,10 +13,10 @@ import re
 
 
 # Path of the parameters file
-# params_path = Path("params.yaml")
+params_path = "/home/aina/uni/TAED2/Project/taed2/src/params.yaml"
 
 # Path of the input data folder
-input_folder_path = Path("data")
+input_folder_path = Path("data/raw")
 
 # Path of the files to read
 data_path = input_folder_path / "raw_data.csv"
@@ -26,12 +26,12 @@ df = pd.read_csv(data_path, encoding = 'latin', header=None)
 
 # Read data preparation parameters
 
-# with open(params_path, "r") as params_file:
-#    try:
-#        params = yaml.safe_load(params_file)
-#        params = params["prepare"]
-#    except yaml.YAMLError as exc:
-#        print(exc)
+with open(params_path, "r") as params_file:
+    try:
+        params = yaml.safe_load(params_file)
+        params = params["prepare"]
+    except yaml.YAMLError as exc:
+        print(exc)
 
 ### Data set processing
 
@@ -54,7 +54,7 @@ stemmer = SnowballStemmer('english')
 text_cleaning_re = "@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+"
 
 def preprocess(text, stem=False):
-    text = re.sub(text_cleaning_re, ' ', str(text).lower()).strip()
+    text = re.sub(text_cleaning_re, ' ', text.encode('utf-8').lower()).strip()
     tokens = []
     for token in text.split():
         if token not in stop_words:
@@ -67,10 +67,9 @@ def preprocess(text, stem=False):
 df.text = df.text.apply(lambda x: preprocess(x))
 
 # Split into train and test sets
-TRAIN_SIZE = 0.8
 MAX_NB_WORDS = 100000
 
-train_data, test_data = train_test_split(df, test_size=1-TRAIN_SIZE,random_state=7)
+train_data, test_data = train_test_split(df, test_size=1-params['train_size'],random_state=params['random_state'])
 
 # Separate target from predictors
 y_train = train_data.sentiment
@@ -81,7 +80,7 @@ X_test = test_data.drop(["sentiment"], axis=1)
 
 
 # Path of the output data folder
-Path("data/processed").mkdir(exist_ok=True)
+Path("data/processed")
 prepared_folder_path = Path("data/processed")
 
 X_train_path = prepared_folder_path / "X_train.csv"

@@ -1,0 +1,29 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python processing.py
+    deps:
+    - path: data/raw/raw_data.csv
+      md5: df952449d6f9b5f9fdfe3fc53ddef7ca
+      size: 238803811
+    - path: processing.py
+      md5: fb743b622212f64cd6d44c1fe7fb2cfa
+      size: 2887
+    params:
+      params.yaml:
+        prepare.random_state: 0
+        prepare.test_size: 0.2
+        prepare.train_size: 0.8
+    outs:
+    - path: data/processed/X_test.csv
+      md5: 01ac1a121bf89400b06ff32b64896319
+      size: 16289449
+    - path: data/processed/X_train.csv
+      md5: cab98a795bbb931d682a79c49e59dd16
+      size: 65146946
+    - path: data/processed/y_test.csv
+      md5: fddd5d32edfa6c5a4e8945e0501fc0ab
+      size: 5217935
+    - path: data/processed/y_train.csv
+      md5: 796208bcb0a1b96bfe4087406197122d
+      size: 20870955
