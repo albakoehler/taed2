@@ -13,7 +13,7 @@ May 2020
 
 ### Model Type
 
-A sequence model is used to avoid problems with words predominantly featured in both Positive and Negative tweets. The model architecture is as follorws. First a tokenisation is done to all the dataset. The first layer is an Embedding Layer that generates an embedding vector for each input sequence. Then, a Conv1D Layer used to convolve data into smaller feature vectors. Next, a Long Short Term Memory and a Fully Connected Layer for classification. Finally there is a sigmoid to get a probability score as an output.
+A sequence model is used to avoid problems with words predominantly featured in both Positive and Negative tweets. The model architecture is as follors. First a tokenisation is done to all the dataset. The first layer is an Embedding Layer that generates an embedding vector for each input sequence. Then, a Conv1D Layer used to convolve data into smaller feature vectors. Next, a Long Short Term Memory and a Fully Connected Layer for classification. Finally there is a sigmoid to get a probability score as an output.
 
 ### Model Versions
 
