@@ -88,14 +88,14 @@ y_train_path = prepared_folder_path / "y_train.csv"
 X_test_path = prepared_folder_path / "X_test.csv"
 y_test_path = prepared_folder_path / "y_test.csv"
 
-X_train.to_csv(X_train_path)
+X_train.to_csv(X_train_path, index=False)
 print("Writing file {} to disk.".format(X_train_path))
 
-y_train.to_csv(y_train_path)
+y_train.to_csv(y_train_path, index=False)
 print("Writing file {} to disk.".format(y_train_path))
 
-X_test.to_csv(X_test_path)
+X_test.to_csv(X_test_path, index=False)
 print("Writing file {} to disk.".format(X_test_path))
 
-y_test.to_csv(y_test_path)
+y_test.to_csv(y_test_path, index=False)
 print("Writing file {} to disk.".format(y_test_path))
