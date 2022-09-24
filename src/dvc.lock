@@ -7,8 +7,8 @@ stages:
       md5: df952449d6f9b5f9fdfe3fc53ddef7ca
       size: 238803811
     - path: processing.py
-      md5: fb743b622212f64cd6d44c1fe7fb2cfa
-      size: 2887
+      md5: 726c7fccba01ff56a48aaf5d72dfde00
+      size: 2939
     params:
       params.yaml:
         prepare.random_state: 0
@@ -16,14 +16,14 @@ stages:
         prepare.train_size: 0.8
     outs:
     - path: data/processed/X_test.csv
-      md5: 01ac1a121bf89400b06ff32b64896319
-      size: 16289449
+      md5: 8c4a3398ab48d7c1b5a4a6d89260bf52
+      size: 13954537
     - path: data/processed/X_train.csv
-      md5: cab98a795bbb931d682a79c49e59dd16
-      size: 65146946
+      md5: f141555cac6f1f7104dad3472fbd2fbd
+      size: 55808310
     - path: data/processed/y_test.csv
-      md5: fddd5d32edfa6c5a4e8945e0501fc0ab
-      size: 5217935
+      md5: 86a6376e15f8107d2e6e77d6dbe9c382
+      size: 2880000
     - path: data/processed/y_train.csv
-      md5: 796208bcb0a1b96bfe4087406197122d
-      size: 20870955
+      md5: 9627b32907c7e1146d69ad7e07414498
+      size: 11520000
