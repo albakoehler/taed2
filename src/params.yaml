@@ -3,5 +3,8 @@ prepare:
   test_size: 0.2
   random_state: 0
 train:
-  algorithm: "RandomForestRegressor"
-  random_state: 0
+  algorithm: "LSTM"
+  EMBEDDING_DIM: 300
+  LR: 0.001
+  BATCH_SIZE: 1024
+  EPOCHS: 10
