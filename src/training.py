@@ -1,6 +1,7 @@
 from tensorflow.keras.layers import Conv1D, Bidirectional, LSTM, Dense, Input, Dropout, SpatialDropout1D
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import model_from_json
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -131,7 +132,17 @@ history = model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
 
 # save the model as a pickle file
 
-output_folder_path = Path("models")
+output_folder_path = Path("/home/aina/uni/TAED2/Project/taed2/models")
 
 with open(output_folder_path / "lstm_model.pkl", "wb") as pickle_file:
     pickle.dump(model, pickle_file)
+
+# serialize model to JSON
+model_json = model.to_json()
+with open(output_folder_path / "model.json", "w") as json_file:
+    json_file.write(model_json)
+
+# serialize weights to HDF5
+model.save_weights(output_folder_path / "model_weights.h5")
+
+print("Saved model to disk")
