@@ -56,3 +56,22 @@ stages:
     - path: ../models/lstm_model.pkl
       md5: 80759e6e3fe7728438bf6bfe3a69109a
       size: 356526306
+  evaluate:
+    cmd: python evaluation.py
+    deps:
+    - path: ../models/lstm_model.pkl
+      md5: 32b5e60bc8a014d66545693c2d92c54f
+      size: 356526306
+    - path: data/processed/X_test.csv
+      md5: 8c4a3398ab48d7c1b5a4a6d89260bf52
+      size: 13954537
+    - path: data/processed/y_test.csv
+      md5: 729ded2b8a94e179806369cbcfe7344d
+      size: 2880010
+    - path: evaluation.py
+      md5: 368dcd54aa3486e9bb6e59f53bf2de70
+      size: 2287
+    outs:
+    - path: ../metrics/scores.json
+      md5: 1e04f6d9b83765a6b97141f11ffbfbb7
+      size: 209

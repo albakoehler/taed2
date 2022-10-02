@@ -29,3 +29,13 @@ stages:
     - train.algorithm
     outs:
     - ../models/lstm_model.pkl
+  evaluate:
+    cmd: python evaluation.py
+    deps:
+    - ../models/lstm_model.pkl
+    - data/processed/X_test.csv
+    - data/processed/y_test.csv
+    - evaluation.py
+    metrics:
+    - ../metrics/scores.json:
+        cache: false
