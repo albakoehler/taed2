@@ -131,7 +131,9 @@ history = model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
                     validation_data=(x_test, y_test), callbacks=[ReduceLROnPlateau])
 
 # save the model as a pickle file
+
 output_folder_path = Path("/home/aina/uni/TAED2/Project/taed2/models")
+
 with open(output_folder_path / "lstm_model.pkl", "wb") as pickle_file:
     pickle.dump(model, pickle_file)
 

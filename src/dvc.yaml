@@ -13,3 +13,19 @@ stages:
     - data/processed/X_train.csv
     - data/processed/y_test.csv
     - data/processed/y_train.csv
+  train:
+    cmd: python training.py
+    deps:
+    - data/processed/X_test.csv
+    - data/processed/X_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv
+    - training.py
+    params:
+    - train.BATCH_SIZE
+    - train.EMBEDDING_DIM
+    - train.EPOCHS
+    - train.LR
+    - train.algorithm
+    outs:
+    - ../models/lstm_model.pkl

@@ -87,3 +87,11 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# env
+bin/
+lib64
+pyvenv.cfg
+
+# others
+src/glove/

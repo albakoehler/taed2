@@ -27,3 +27,32 @@ stages:
     - path: data/processed/y_train.csv
       md5: 9627b32907c7e1146d69ad7e07414498
       size: 11520000
+  train:
+    cmd: python training.py
+    deps:
+    - path: data/processed/X_test.csv
+      md5: 8c4a3398ab48d7c1b5a4a6d89260bf52
+      size: 13954537
+    - path: data/processed/X_train.csv
+      md5: f141555cac6f1f7104dad3472fbd2fbd
+      size: 55808310
+    - path: data/processed/y_test.csv
+      md5: 729ded2b8a94e179806369cbcfe7344d
+      size: 2880010
+    - path: data/processed/y_train.csv
+      md5: b39385c68402f4b8b67dd833f8830db9
+      size: 11520010
+    - path: training.py
+      md5: d6e84063f5b1edc19d0995a47eef78a6
+      size: 5178
+    params:
+      params.yaml:
+        train.BATCH_SIZE: 1024
+        train.EMBEDDING_DIM: 300
+        train.EPOCHS: 10
+        train.LR: 0.001
+        train.algorithm: LSTM
+    outs:
+    - path: ../models/lstm_model.pkl
+      md5: 80759e6e3fe7728438bf6bfe3a69109a
+      size: 356526306
