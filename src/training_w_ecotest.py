@@ -30,7 +30,7 @@ X_train.text=X_train.text.astype(str)
 X_test.text=X_test.text.astype(str)
 
 # Path of the parameters file
-params_path = "/home/aina/uni/TAED2/Project/taed2/src/params.yaml"
+params_path = "params.yaml"
 
 # Read data preparation parameters
 with open(params_path, "r") as params_file:
@@ -144,7 +144,7 @@ emissions: float = tracker.stop()
 print(emissions)
 
 # save the model as a pickle file
-output_folder_path = Path("/home/aina/uni/TAED2/Project/taed2/models")
+output_folder_path = Path("models")
 with open(output_folder_path / "lstm_model.pkl", "wb") as pickle_file:
     pickle.dump(model, pickle_file)
 

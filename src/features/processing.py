@@ -13,7 +13,7 @@ import re
 
 
 # Path of the parameters file
-params_path = "/home/aina/uni/TAED2/Project/taed2/src/params.yaml"
+params_path = "params.yaml"
 
 # Path of the input data folder
 input_folder_path = Path("data/raw")
@@ -54,7 +54,7 @@ stemmer = SnowballStemmer('english')
 text_cleaning_re = "@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+"
 
 def preprocess(text, stem=False):
-    text = re.sub(text_cleaning_re, ' ', text.encode('utf-8').lower()).strip()
+    text = re.sub(text_cleaning_re, ' ', str(text).lower()).strip()
     tokens = []
     for token in text.split():
         if token not in stop_words:

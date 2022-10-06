@@ -13,10 +13,10 @@ from keras.preprocessing.text import Tokenizer
 input_folder_path = Path("data/processed")
 
 # Path to the models folder
-model_folder_path = Path("/home/aina/uni/TAED2/Project/taed2/models")
+model_folder_path = Path("../models")
 
 # Path to the metrics folder
-metrics_folder_path = Path("/home/aina/uni/TAED2/Project/taed2/metrics")
+metrics_folder_path = Path("../metrics")
 
 # Read validation dataset
 x_test = pd.read_csv(input_folder_path / "X_test.csv")
