@@ -13,7 +13,7 @@ import re
 
 
 # Path of the parameters file
-params_path = "/home/aina/uni/TAED2/Project/taed2/src/params.yaml"
+params_path = "params.yaml"
 
 # Path of the input data folder
 input_folder_path = Path("data/raw")
