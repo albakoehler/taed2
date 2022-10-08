@@ -1,0 +1,98 @@
+
+config_version: 3.0
+datasources:
+  processed_data:
+    data_connectors:
+      default_inferred_data_connector_name:
+        class_name: InferredAssetFilesystemDataConnector
+        default_regex:
+          group_names:
+            - data_asset_name
+          pattern: (.*)
+        base_directory: ../processed
+        module_name: great_expectations.datasource.data_connector
+        name: default_inferred_data_connector_name
+      default_runtime_data_connector_name:
+        class_name: RuntimeDataConnector
+        assets:
+          my_runtime_asset_name:
+            class_name: Asset
+            batch_identifiers:
+              - runtime_batch_identifier_name
+            module_name: great_expectations.datasource.data_connector.asset
+        module_name: great_expectations.datasource.data_connector
+        name: default_runtime_data_connector_name
+    class_name: Datasource
+    execution_engine:
+      module_name: great_expectations.execution_engine
+      class_name: PandasExecutionEngine
+    module_name: great_expectations.datasource
+
+    
+# The plugins_directory will be added to your python path for custom modules
+# used to override and extend Great Expectations.
+plugins_directory: plugins/
+
+stores:
+# Stores are configurable places to store things like Expectations, Validations
+# Data Docs, and more. These are for advanced users only - most users can simply
+# leave this section alone.
+#
+# Three stores are required: expectations, validations, and
+# evaluation_parameters, and must exist with a valid store entry. Additional
+# stores can be configured for uses such as data_docs, etc.
+  expectations_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: expectations/
+
+  validations_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: uncommitted/validations/
+
+  evaluation_parameter_store:
+    class_name: EvaluationParameterStore
+  checkpoint_store:
+    class_name: CheckpointStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      suppress_store_backend_id: true
+      base_directory: checkpoints/
+
+  profiler_store:
+    class_name: ProfilerStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      suppress_store_backend_id: true
+      base_directory: profilers/
+
+expectations_store_name: expectations_store
+validations_store_name: validations_store
+evaluation_parameter_store_name: evaluation_parameter_store
+checkpoint_store_name: checkpoint_store
+
+data_docs_sites:
+  # Data Docs make it simple to visualize data quality in your project. These
+  # include Expectations, Validations & Profiles. The are built for all
+  # Datasources from JSON artifacts in the local repo including validations &
+  # profiles from the uncommitted directory. Read more at https://docs.greatexpectations.io/docs/terms/data_docs
+  local_site:
+    class_name: SiteBuilder
+    show_how_to_buttons: true
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: uncommitted/data_docs/local_site/
+    site_index_builder:
+      class_name: DefaultSiteIndexBuilder
+
+anonymous_usage_statistics:
+  data_context_id: 3e14d5ed-e83c-4674-80c1-1230f578e8f0
+  enabled: true
+include_rendered_content:
+  globally: false
+  expectation_validation_result: false
+  expectation_suite: false
+notebooks:
