@@ -135,12 +135,4 @@ output_folder_path = Path("../models")
 with open(output_folder_path / "lstm_model.pkl", "wb") as pickle_file:
     pickle.dump(model, pickle_file)
 
-# serialize model to JSON
-model_json = model.to_json()
-with open(output_folder_path / "model.json", "w") as json_file:
-    json_file.write(model_json)
-
-# serialize weights to HDF5
-model.save_weights(output_folder_path / "model_weights.h5")
-
 print("Saved model to disk")
