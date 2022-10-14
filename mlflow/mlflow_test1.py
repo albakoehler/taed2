@@ -14,6 +14,7 @@ import yaml
 import mlflow
 
 input_folder_path = Path("../src/data/processed")
+output_folder_path = Path("models")
 
 # Read training dataset
 X_train = pd.read_csv(input_folder_path / "X_train.csv")

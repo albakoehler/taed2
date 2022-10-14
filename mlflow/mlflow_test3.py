@@ -109,9 +109,3 @@ with mlflow.start_run(experiment_id=3):
                         validation_data=(x_test, y_test), callbacks=[ReduceLROnPlateau])
 
     #model.export_saved_model(output_folder_path)
-
-# save the model as a pickle file
-with open(output_folder_path / "test3_model.pkl", "wb") as pickle_file:
-    pickle.dump(model, pickle_file)
-
-print("Saved model to disk")

@@ -14,7 +14,6 @@ import yaml
 import mlflow
 
 input_folder_path = Path("../src/data/processed")
-output_folder_path = Path("models")
 
 # Read training dataset
 X_train = pd.read_csv(input_folder_path / "X_train.csv")
@@ -50,16 +49,15 @@ y_test = y_test.reshape(-1,1)
 
 mlflow.tensorflow.autolog()
 
-mlflow.set_experiment('Batch size value 2048')
+mlflow.set_experiment('Default')
 
-with mlflow.start_run(experiment_id=2):
+with mlflow.start_run(experiment_id=0):
     # parameters
     GLOVE_EMB = '../src/glove/glove.6B.300d.txt'
     EMBEDDING_DIM = 300
     LR = 0.001
-    BATCH_SIZE = 2048
+    BATCH_SIZE = 1024
     EPOCHS = 10
-    EPOCHS = 8
 
     # Word embedding --- Embedding layer
     embeddings_index = {}
@@ -107,4 +105,3 @@ with mlflow.start_run(experiment_id=2):
 
     history = model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
                         validation_data=(x_test, y_test), callbacks=[ReduceLROnPlateau])
-
