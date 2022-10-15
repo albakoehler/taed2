@@ -97,3 +97,4 @@ pyvenv.cfg
 src/glove/
 mlflow/models/
 mlflow/mlruns/
+src/data/processed/
