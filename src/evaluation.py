@@ -1,12 +1,12 @@
-from sklearn.metrics import accuracy_score, precision_score, recall_score
 import pickle
 import json
 import pandas as pd
 from pathlib import Path
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import numpy as np
 from keras.utils import pad_sequences
-from sklearn.preprocessing import LabelEncoder
 from keras.preprocessing.text import Tokenizer
 
 # Path to the prepared data folder
