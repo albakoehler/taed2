@@ -35,6 +35,7 @@ x_test.text= x_test.text.astype(str)
 MAX_SEQUENCE_LENGTH = 30
 x_test = pad_sequences(tokenizer.texts_to_sequences(x_test.text), maxlen = MAX_SEQUENCE_LENGTH)
 
+"""give the sentiment evaluation based on the score"""
 def decode_sentiment(score):
     return "Positive" if score>0.5 else "Negative"
 
