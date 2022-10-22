@@ -12,13 +12,13 @@ def decode_sentiment(score):
     return "Positive" if score>0.5 else "Negative"
     
 #We have 3 experiments: 
-#1) As >0.5 is positive we check it with 0.7
+#1) As >0.5 is positive we check it with 0.8
 #2) As <0.5 is positive we check it with 0.1
 #3) We check whether having an incorrect label is seeing as a FAIL experiment
 @pytest.mark.parametrize("score,expected_decode", [
-    (0.7, "Positive"),
+    (0.8, "Positive"),
     (0.1,"Negative"),
-    (8, "Negative"),
+    (0.7, "Negative"),
 ])
 
 def test_decode_sentiment(score, expected_decode):
