@@ -59,7 +59,6 @@ with mlflow.start_run(experiment_id=3):
     LR = 0.001
     BATCH_SIZE = 512
     EPOCHS = 10
-    EPOCHS = 12
 
     # Word embedding --- Embedding layer
     embeddings_index = {}
