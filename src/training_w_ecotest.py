@@ -1,8 +1,10 @@
 from codecarbon import EmissionsTracker
-from tensorflow.keras.layers import Conv1D, Bidirectional, LSTM, Dense, Input, Dropout, SpatialDropout1D
+from tensorflow.keras import Model, Input
+from tensorflow.keras.layers import Flatten, Conv2D, MaxPooling2D, Conv1D, Bidirectional, LSTM, Dense, Input, Dropout, SpatialDropout1D
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import model_from_json
+from keras_flops import get_flops
 import tensorflow as tf
 import pandas as pd
 import numpy as np
@@ -12,6 +14,9 @@ from keras.preprocessing.text import Tokenizer
 from pathlib import Path
 import pickle
 import yaml
+
+
+
 
 
 
@@ -135,6 +140,10 @@ tracker.start()
 
 history = model.fit(x_train, y_train, batch_size=BATCH_SIZE, epochs=EPOCHS,
                     validation_data=(x_test, y_test), callbacks=[ReduceLROnPlateau])
+
+
+flops = get_flops(model, batch_size=BATCH_SIZE)
+print(f"FLOPS: {flops / 10 ** 9:.03} G")
 
 tracker.stop()
 

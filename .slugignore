@@ -1,9 +1,0 @@
-mlflow/
-pytest/
-docs/
-src/data/great_expectations/
-reports/
-DatasetCard.md
-ModelCard.md
-.dvc/
-reports/
